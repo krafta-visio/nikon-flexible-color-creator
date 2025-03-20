@@ -1,0 +1,640 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	
+	<meta name="keywords" content="Nikon Flexible Color, Nikon Picture Control, Color Profile Generator, LUT Generator, Lightroom Presets, ACR Color Profiles, Nikon Z Series, Color Grading, Photography Tools, Camera Color Profiles" />
+	<meta name="description" content="Easily generate Nikon Flexible Color Profiles and LUTs for Nikon Z Series Camera. Customize your colors and enhance your workflow with precision." />
+	<meta name="author" content="krafta." />
+	<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+	<meta http-equiv="Pragma" content="no-cache">
+	<meta http-equiv="Expires" content="0">
+	<meta name="google" content="notranslate">	
+	<link rel="icon" href="fixico1.ico" type="image/x-icon" />
+	<link rel="shortcut icon" type="image/x-icon" href="fixico1.ico" />
+	
+	<meta property="og:locale" content="id_ID" />
+	<meta property="og:type" content="website" />
+	<meta property="og:title" content="Flexible Color Profile Creator" />
+	<meta property="og:description" content="Easily generate Nikon Flexible Color Profiles and LUTs for Nikon Z Series Camera. Customize your colors and enhance your workflow with precision." />
+	<meta property="og:image" content="https://krafta-visio.github.io/Nikon-Flexible-Color-Creator/og-images.jpg" />
+	<meta property="og:image:width" content="1200" />
+	<meta property="og:image:height" content="630" />
+	<meta property="og:url" content="https://krafta-visio.github.io/Nikon-Flexible-Color-Creator" />
+	<meta property="og:site_name" content="krafta | Flexible Color Profile Creator" />	
+	<meta property="fb:app_id" content="771033985084304" />
+	
+	<title>Flexible Color Creator</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+	
+	<style>
+	@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+	</style>	
+	
+	<style>
+	<!--
+	body{
+		background-color: #f4f4f4;
+		font-family: Poppins;
+	}
+	#liveToast {
+		position: fixed;
+		top: 10px; /* Jarak dari atas */
+		left: 50%;
+		transform: translateX(-50%); /* Pusatkan elemen secara horizontal */
+		z-index: 1050; /* Pastikan muncul di atas elemen lain */
+	}
+	.h-60{
+		min-height:65vh;
+	}
+	.text-small{
+		font-size: 10pt;
+	}
+	footer a{
+		color: #513f09;
+		text-decoration: none;
+		font-weight: bold;
+	}
+	-->
+	</style>
+</head>
+<body>
+
+	<div id="fb-root"></div>
+	<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v22.0&appId=771033985084304"></script>
+
+	<div style="background-color: #;" class="container">
+		
+		<div class="row bg-warning" style="height:13px;"></div>
+		
+		<div class="row mb-5 mt-3">
+			<div class="col-md-7">
+				<h1 class="display-4"><strong>Flexible</strong> Color Creator</h1>
+				<h3><span class="badge rounded-pill text-bg-warning">Master Your Colors, Perfect Your Shot!</span></h3>
+				<p class="text-muted">Customize your look in-camera with advanced Picture Controls, Color Blender, and Color Grading. Save and upload your custom profiles to a compatible Nikon Z camera.</p>
+			</div>
+			<div class="col-md-5">
+			
+				<div class="toast show float-end" role="alert" aria-live="assertive" aria-atomic="true">
+				  <div class="toast-header bg-danger">
+					<strong class="me-auto text-light">⚠️ IMPORTANT</strong>
+					<button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+				  </div>
+				  <div class="toast-body">
+					⚠️ <strong>Use at Your Own Risk!</strong><br>
+					Before using the NP3 file on your Nikon camera, <strong>test it first in Nikon NX Studio</strong>.<br>
+					We are <strong>not responsible</strong> for any errors, color issues, or unexpected effects.
+				  </div>
+				</div>
+			
+			</div>
+		</div>
+		
+		
+		<div class="row mb-3">
+		
+			<div class="col-md-8">
+				<div class="card fw-bold shadow-lg ">
+					<div class="card-body bg-secondary text-light">
+						<div class="d-flex justify-content-between">
+							<div class="form-group">
+								<label class="form-label">Select Custom Picture Control .NP3 File</label>
+								<input type="file" id="fileInput" class="form-control" accept=".NP3">
+								<div class="form-text text-warning">Select an NP3 file to see its contents.</div>
+							</div>
+							- Or -
+							<div class="form-group">
+								<label class="form-label">Select Lightroom/ACR Preset .XMP File</label>
+								<input type="file" id="fileInputXmp" class="form-control" accept=".XMP">
+								<div class="form-text text-warning">Select an preset XMP file to copy values.</div>
+							</div>
+						</div>					
+					</div>
+				</div>
+			</div>
+			
+			<div class="col-md-4">
+				<div class="card shadow-sm border-0">
+					<div class="card-body" style="font-size: 10pt;">
+						<h5 class="card-title fw-bold">How to Use</h5>
+						<ul class="list">
+							<li><strong>Upload</strong> – Import <em>Color Profile (.NP3)</em> or <em>Lightroom Preset (.XMP)</em>.</li>
+							<li><strong>Adjust</strong> – Fine-tune settings in the form.</li>
+							<li><strong>Download</strong> – Get your customized file.</li>
+						</ul>
+						<p class="mt-2">✨ Or create a new style from scratch and download instantly!</p>					
+					</div>
+				</div>
+			</div>
+		
+		</div>
+		
+		<div id="toastContainer" class="toast-container position-fixed bottom-0 end-0 p-3"></div>
+
+		<form id="editorForm">
+			
+			<div class="row mb-5">
+		
+				<div class="col-md-4">
+					<div class="card">
+						<h5 class="card-header">Basic Settings</h5>
+						<div id="basicSettings" class="card-body  h-60">
+						
+						
+							<div class="mb-3">
+								<label class="form-label">Color Profile Name</label>
+								<input type="text" class="form-control" id="basicSetting_name" value="FlexColorPicture" data-key="basicSetting_name" maxlength="19" pattern="[a-zA-Z0-9\- ]{1,19}">
+							</div>						
+						
+							<hr>
+							
+							<div class="row mb-3">
+							
+								<div class="col-md-4">
+									<label class="form-label"><br>Sharpening</label>
+									<input type="number" class="form-control" id="basicSetting_sharpning" value="2" data-key="basicSetting_sharpning" min="-3" max="9" step="0.25">
+								</div>						
+
+								<div class="col-md-4">
+									<label class="form-label">Mid-range Sharpening</label>
+									<input type="number" class="form-control" id="basicSetting_midRangeSharpning" value="1.00" data-key="basicSetting_midRangeSharpning" min="-5" max="5" step="0.25">
+								</div>						
+
+								<div class="col-md-4">
+									<label class="form-label"><br>Clarity</label>
+									<input type="number" class="form-control" id="basicSetting_clarity" value="0.50" data-key="basicSetting_clarity" min="-5" max="5" step="0.25">
+								</div>
+						
+							</div>
+
+							<hr>
+
+							<div class="row mb-3">
+							
+								<div class="col-md-6 mb-3">
+									<label class="form-label">Contrast</label>
+									<input type="number" class="form-control" id="basicSetting_contrast" value="0" data-key="basicSetting_contrast" min="-100" max="100">
+								</div>						
+						
+								<div class="col-md-6 mb-3">
+									<label class="form-label">Saturation</label>
+									<input type="number" class="form-control" id="basicSetting_saturation" value="0" data-key="basicSetting_saturation" min="-100" max="100">
+								</div>						
+						
+								<div class="col-md-6 mb-3">
+									<label class="form-label">Highlights</label>
+									<input type="number" class="form-control" id="basicSetting_highlights" value="0" data-key="basicSetting_highlights" min="-100" max="100">
+								</div>						
+						
+								<div class="col-md-6 mb-3">
+									<label class="form-label">Shadows</label>
+									<input type="number" class="form-control" id="basicSetting_shadows" value="0" data-key="basicSetting_shadows" min="-100" max="100">
+								</div>						
+						
+								<div class="col-md-6 mb-3">
+									<label class="form-label">White Level</label>
+									<input type="number" class="form-control" id="basicSetting_whiteLevel" value="0" data-key="basicSetting_whiteLevel" min="-100" max="100">
+								</div>						
+						
+								<div class="col-md-6 mb-3">
+									<label class="form-label">Black Level</label>
+									<input type="number" class="form-control" id="basicSetting_blackLevel" value="0" data-key="basicSetting_blackLevel" min="-100" max="100">
+								</div>	
+								
+							</div>
+							
+						</div>
+					</div>	
+				</div>	
+					
+				<div class="col-md-4">
+					<div class="card">
+						<h5 class="card-header">Color Blender</h5>
+						<div id="colorBlenderSettings" class="card-body h-60">
+						
+							<table class="table">
+								<thead>
+									<tr>
+										<th scope="col">&nbsp;</th>
+										<th scope="col">Hue</th>
+										<th scope="col">Sat</th>
+										<th scope="col">Lum</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td style="background-color: #ff00163d;">Red</td>
+										<td><input type="number" class="form-control text-center" id="colorBlender_hue_red" value="0" min="-100" max="100" data-key="colorBlender_hue_red"></td>
+										<td><input type="number" class="form-control text-center" id="colorBlender_chroma_red" value="0" min="-100" max="100" data-key="colorBlender_chroma_red"></td>
+										<td><input type="number" class="form-control text-center" id="colorBlender_brightness_red" value="0" min="-100" max="100" data-key="colorBlender_brightness_red"></td>
+									</tr>
+									<tr>
+										<td style="background-color: #ff7f003d;">Orange</td>
+										<td><input type="number" class="form-control text-center" id="colorBlender_hue_orange" value="0" min="-100" max="100" data-key="colorBlender_hue_orange"></td>
+										<td><input type="number" class="form-control text-center" id="colorBlender_chroma_orange" value="0" min="-100" max="100" data-key="colorBlender_chroma_orange"></td>
+										<td><input type="number" class="form-control text-center" id="colorBlender_brightness_orange" value="0" min="-100" max="100" data-key="colorBlender_brightness_orange"></td>
+									</tr>
+									<tr>
+										<td style="background-color: #ffff003d;">Yellow</td>
+										<td><input type="number" class="form-control text-center" id="colorBlender_hue_yellow" value="0" min="-100" max="100" data-key="colorBlender_hue_yellow"></td>
+										<td><input type="number" class="form-control text-center" id="colorBlender_chroma_yellow" value="0" min="-100" max="100" data-key="colorBlender_chroma_yellow"></td>
+										<td><input type="number" class="form-control text-center" id="colorBlender_brightness_yellow" value="0" min="-100" max="100" data-key="colorBlender_brightness_yellow"></td>
+									</tr>
+									<tr>
+										<td style="background-color: #00ff003d;">Green</td>
+										<td><input type="number" class="form-control text-center" id="colorBlender_hue_green" value="0" min="-100" max="100" data-key="colorBlender_hue_green"></td>
+										<td><input type="number" class="form-control text-center" id="colorBlender_chroma_green" value="0" min="-100" max="100" data-key="colorBlender_chroma_green"></td>
+										<td><input type="number" class="form-control text-center" id="colorBlender_brightness_green" value="0" min="-100" max="100" data-key="colorBlender_brightness_green"></td>
+									</tr>
+									<tr>
+										<td style="background-color: #00ffff3d;">Cyan</td>
+										<td><input type="number" class="form-control text-center" id="colorBlender_hue_cyan" value="0" min="-100" max="100" data-key="colorBlender_hue_cyan"></td>
+										<td><input type="number" class="form-control text-center" id="colorBlender_chroma_cyan" value="0" min="-100" max="100" data-key="colorBlender_chroma_cyan"></td>
+										<td><input type="number" class="form-control text-center" id="colorBlender_brightness_cyan" value="0" min="-100" max="100" data-key="colorBlender_brightness_cyan"></td>
+									</tr>
+									<tr>
+										<td style="background-color: #0000ff3d;">Blue</td>
+										<td><input type="number" class="form-control text-center" id="colorBlender_hue_blue" value="0" min="-100" max="100" data-key="colorBlender_hue_blue"></td>
+										<td><input type="number" class="form-control text-center" id="colorBlender_chroma_blue" value="0" min="-100" max="100" data-key="colorBlender_chroma_blue"></td>
+										<td><input type="number" class="form-control text-center" id="colorBlender_brightness_blue" value="0" min="-100" max="100" data-key="colorBlender_brightness_blue"></td>
+									</tr>
+									<tr>
+										<td style="background-color: #7f00ff3d;">Purple</td>
+										<td><input type="number" class="form-control text-center" id="colorBlender_hue_purple" value="0" min="-100" max="100" data-key="colorBlender_hue_purple"></td>
+										<td><input type="number" class="form-control text-center" id="colorBlender_chroma_purple" value="0" min="-100" max="100" data-key="colorBlender_chroma_purple"></td>
+										<td><input type="number" class="form-control text-center" id="colorBlender_brightness_purple" value="0" min="-100" max="100" data-key="colorBlender_brightness_purple"></td>
+									</tr>
+									<tr>
+										<td style="background-color: #ff00ff3d;">Magenta</td>
+										<td><input type="number" class="form-control text-center" id="colorBlender_hue_magenta" value="0" min="-100" max="100" data-key="colorBlender_hue_magenta"></td>
+										<td><input type="number" class="form-control text-center" id="colorBlender_chroma_magenta" value="0" min="-100" max="100" data-key="colorBlender_chroma_magenta"></td>
+										<td><input type="number" class="form-control text-center" id="colorBlender_brightness_magenta" value="0" min="-100" max="100" data-key="colorBlender_brightness_magenta"></td>
+									</tr>
+								</tbody>
+							</table>
+
+						</div>
+					</div>	
+				</div>	
+					
+				<div class="col-md-4">
+					<div class="card">
+						<h5 class="card-header">Color Grading</h5>
+						<div id="colorGradingSettings" class="card-body  h-60">
+							<div class="border p-3 mb-3">
+								<h5>Highlights</h5>
+								<div class="d-flex justify-content-between">
+									<div class="form-group">
+										<label for="input-highlights" class="form-label">hue</label>
+										<input type="number" class="form-control" id="colorGrading_hue_highlights" value="0" min="0" max="359" data-key="colorGrading_hue_highlights">
+									</div>
+									<div class="form-group">
+										<label for="input-highlights" class="form-label">chroma</label>
+										<input type="number" class="form-control" id="colorGrading_chroma_highlights" value="0" min="0" max="100" data-key="colorGrading_chroma_highlights">
+									</div>
+									<div class="form-group">
+										<label for="input-highlights" class="form-label">brightness</label>
+										<input type="number" class="form-control" id="colorGrading_brightness_highlights" value="0" min="-100" max="100" data-key="colorGrading_brightness_highlights">
+									</div>
+								</div>
+							</div>
+							<div class="border p-3 mb-3">
+								<h5>Mid-Tone</h5>
+								<div class="d-flex justify-content-between">
+									<div class="form-group">
+										<label for="input-midTone" class="form-label">hue</label>
+										<input type="number" class="form-control" id="colorGrading_hue_midTone" value="0" min="0" max="359" data-key="colorGrading_hue_midTone">
+									</div>
+									<div class="form-group">
+										<label for="input-midTone" class="form-label">chroma</label>
+										<input type="number" class="form-control" id="colorGrading_chroma_midTone" value="0" min="0" max="100" data-key="colorGrading_chroma_midTone">
+									</div>
+									<div class="form-group">
+										<label for="input-midTone" class="form-label">brightness</label>
+										<input type="number" class="form-control" id="colorGrading_brightness_midTone" value="0" min="-100" max="100" data-key="colorGrading_brightness_midTone">
+									</div>
+								</div>
+							</div>
+							<div class="border p-3 mb-3">
+								<h5>Shadows</h5>
+								<div class="d-flex justify-content-between">
+									<div class="form-group">
+										<label for="input-shadows" class="form-label">hue</label>
+										<input type="number" class="form-control" id="colorGrading_hue_shadows" value="0" min="0" max="359" data-key="colorGrading_hue_shadows">
+									</div>
+									<div class="form-group">
+										<label for="input-shadows" class="form-label">chroma</label>
+										<input type="number" class="form-control" id="colorGrading_chroma_shadows" value="0" min="0" max="100" data-key="colorGrading_chroma_shadows">
+									</div>
+									<div class="form-group">
+										<label for="input-shadows" class="form-label">brightness</label>
+										<input type="number" class="form-control" id="colorGrading_brightness_shadows" value="0" min="-100" max="100" data-key="colorGrading_brightness_shadows">
+									</div>
+								</div>
+							</div>
+							<hr>
+							<div class="row">
+								<div class="col-md-6 form-group">
+									<label for="input-blending" class="form-label">Blending</label>
+									<input type="number" class="form-control" id="colorGrading_blending_blending" value="50" data-key="colorGrading_blending_blending" min="0" max="100">
+								</div>
+								<div class="col-md-6 form-group">
+									<label for="input-balance" class="form-label">Balance</label>
+									<input type="number" class="form-control" id="colorGrading_balance_balance" value="0" data-key="colorGrading_balance_balance" min="-100" max="100">
+								</div>
+							</div>
+						</div>
+					</div>	
+				
+				</div>
+				
+				<div class="col-12 mt-3">
+					<button id="saveButton" class="btn btn-warning btn-lg fw-bold shadow-lg px-4 py-2 rounded-pill float-end">🎨 Generate & Download Profile</button>
+				</div>
+
+			</div>	
+				
+		</form>
+		
+					
+		<footer class="p-5 bg-warning" style="font-size: 10pt;">
+			<div class="row">
+				<div class="col-md-4">
+					<h3>Flexible Color Creator</h3>
+					<span class="badge rounded-pill text-bg-dark">In-camera compatible with Nikon Z6III & Z50II.</span>
+					<p class="text-small mt-3 mb-5">
+					Get the look you want in-camera with customizable Picture Controls. Adjust hue, saturation, and brightness for up to 8 colors using the advanced Color Blender.<br><br>Fine-tune highlights, midtones, and shadows with Color Grading, then save and upload your custom profile to a compatible Nikon Z camera.
+					</p>	
+					
+					<b>Follow Us:</b>
+					<div class="fb-page" data-href="https://www.facebook.com/krafta.visio" data-tabs="photos/videos" data-width="" data-height="" data-small-header="true" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/krafta.visio" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/krafta.visio" target="_blank">krafta.</a></blockquote></div>
+					
+				</div>
+				<div class="col-md-4 text-muted">
+					<h5 class="mb-3">Additional Resources</h5>
+					<p>For more details about this application, you can refer to:</p>
+					<ul>
+					    <li>
+					        <a href="https://www.nikon-image.com/sp/fcpc/" target="_blank">Nikon Flexible Color Picture Control</a>
+					    </li>
+					    <li>
+					        <a href="https://imaging.nikon.com/imaging/lineup/software/nx_studio/" target="_blank">Nikon NX Studio</a>
+					    </li>
+					    <li>
+					        <a href="https://nikonimglib.com/nxstdo/onlinehelp/en/the_picture_controls_flexible_color_23.html" target="_blank">The Picture Control (Flexible Color) Tool</a>
+					    </li>
+					    <li>
+					        <a href="https://github.com/krafta-visio/Nikon-Flexible-Color-Creator" target="_blank">GitHub - Flexible Color Creator</a>
+					    </li>
+					</ul>
+					<p>This application is based on modifications of the original project:</p>
+					<ul>
+					    <li>
+					        <a href="https://github.com/ssssota/nikon-flexible-color-picture-control" target="_blank">GitHub - Nikon flexible color picture control reader/writer</a>
+					    </li>
+					</ul>
+					<hr>
+					<p class="mb-0">Improvements and enhancements have been made to optimize its functionality.</p>
+				</div>
+				<div class="col-md-4 text-muted">
+					<h5 class="mb-3">Resources & Downloads</h5>
+					<ul>
+						<li><a href="#" data-bs-toggle="modal" data-bs-target="#modalHowTo">How to Use the Tool</a></li>
+						<li><a href="#" data-bs-toggle="modal" data-bs-target="#modalLightroom">Lightroom/ACR Preset Tools</a></li>
+						<li><a href="#" data-bs-toggle="modal" data-bs-target="#modalDownload">Download LUTs & Color Profiles</a></li>
+						<li><a href="#" data-bs-toggle="modal" data-bs-target="#modalFAQ">FAQs & Troubleshooting</a></li>
+					</ul>
+					
+					<hr>
+					
+					<h5 class="mb-3">Compatibility</h5>
+					<p class="mb-1"><strong>Software:</strong> NX Studio (for all supported cameras)</p>
+					<p class="mb-0"><strong>In-Camera Compatibility:</strong></p>
+					<ul class="list-unstyled mb-2">
+						<li>• Z6III</li>
+						<li>• Z50II</li>
+					</ul>
+					<p class="mb-0"><strong>Software-Only Compatibility:</strong></p>
+					<ul class="list-unstyled mb-0">
+						<li>• Z9</li>
+						<li>• Z8</li>
+						<li>• Zf</li>
+					</ul>
+					
+				</div>
+			</div>
+		</footer>
+		<footer class="p-4 bg-dark text-warning text-center" style="font-size: 8.5pt;">
+			<p class="mb-0">Designed & Developed by <a href="https://www.facebook.com/krafta.visio" class="text-warning fw-bold" target="_blank">krafta.</a> © 2025.</p>
+		</footer>
+		
+	</div>
+	
+	
+	<!-- Modal: How to Use the Tool -->
+	<div class="modal fade" id="modalHowTo" tabindex="-1" aria-labelledby="modalHowToLabel" aria-hidden="true">
+		<div class="modal-dialog modal-xl">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title fw-bold" id="modalHowToLabel">How to Use the Tool</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+					<p>This tool allows you to customize and generate color profiles easily. Follow these steps:</p>
+
+					<h6 class="fw-bold mt-3">1️⃣ Upload Your File</h6>
+					<p>Choose a <strong>Color Profile (.NP3)</strong> or <strong>Lightroom Preset (.XMP)</strong> file to upload.</p>
+
+					<h6 class="fw-bold mt-3">2️⃣ Adjust Your Settings</h6>
+					<p>Modify color values, hue, saturation, brightness, and other parameters as needed.</p>
+
+					<h6 class="fw-bold mt-3">3️⃣ Download Your Custom Profile</h6>
+					<p>Once satisfied with the adjustments, click the <strong>Generate & Download Profile</strong> button to save your file.</p>
+
+					<div class="alert alert-info mt-4">
+						✨ <strong>Or Create a New Style:</strong>  
+						If you don’t have a file, you can create a new color profile from scratch by filling out the form and downloading the result.
+					</div>
+
+					<p class="text-muted mt-3">For further assistance, visit the <a href="#">FAQs & Troubleshooting</a> page.</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	
+	
+	<!-- Modal: Lightroom Tools -->
+	<div class="modal fade" id="modalLightroom" tabindex="-1" aria-labelledby="modalLightroomLabel" aria-hidden="true">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title fw-bold" id="modalLightroomLabel">Lightroom Preset Generator</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+					<p>
+						Generate <strong>Lightroom/ACR XMP Presets</strong> instantly with three preset intensity levels. 
+						Select an option below and download your preset immediately.
+					</p>
+
+					<h6 class="fw-bold">🎯 Choose Preset Intensity:</h6>
+					<div class="d-flex flex-column gap-3 mt-3">
+						<button class="btn btn-outline-secondary btn-lg w-100 generate-preset" data-intensity="light">
+							🌿 Light Preset
+						</button>
+						<button class="btn btn-outline-warning btn-lg w-100 generate-preset" data-intensity="medium">
+							🌤️ Medium Preset
+						</button>
+						<button class="btn btn-outline-dark btn-lg w-100 generate-preset" data-intensity="strong">
+							🔥 Strong Preset
+						</button>
+					</div>
+
+					<div class="alert alert-info mt-4" role="alert">
+						Each preset is automatically generated using carefully calibrated Lightroom settings, providing a quick and effortless way to explore different creative styles.
+					</div>
+					
+					<pre id="AcrPresetOutput" style="display:none;"></pre>
+					
+				</div>
+			</div>
+		</div>
+	</div>
+
+	
+	<!-- Modal: Download LUTs & Color Profiles -->
+	<div class="modal fade" id="modalDownload" tabindex="-1" aria-labelledby="modalDownloadLabel" aria-hidden="true">
+	    <div class="modal-dialog modal-lg">
+	        <div class="modal-content">
+	            <div class="modal-header">
+	                <h5 class="modal-title" id="modalDownloadLabel">Download LUTs & Color Profiles</h5>
+	                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+	            </div>
+	            <div class="modal-body">
+						<p>This tool provides two essential files to help you match Nikon’s <strong>Flexible Color</strong> look on standard images (STD RGB). These files allow you to transform a regular image into a Nikon-style flexible base before applying your custom edits in Lightroom, Adobe Camera Raw (ACR), or Photoshop.</p>
+
+						<h6 class="fw-bold mt-3">📥 1. Download LUTs (Look-Up Tables)</h6>
+						<p>
+							The <strong>LUTs</strong> are designed to convert standard images into Nikon’s Flexible Color base.  
+							- Format: <strong>.CUBE</strong> (compatible with Photoshop, DaVinci Resolve, Premiere Pro, etc.)  
+							- Purpose: Adjusts standard photos/videos to Nikon’s Flexible Color look before further editing.  
+							- Usage: Apply in **Photoshop (via Color Lookup adjustment layer)** or in video editing software for color grading.  
+						</p>
+						<a href="LUTs - STD to NIKON Flexible Color by krafta.zip" class="btn btn-primary fw-bold"><i class="bi bi-download"></i> Download LUTs</a>
+
+						<h6 class="fw-bold mt-4">📥 2. Download Color Profile for Adobe Camera Raw & Lightroom</h6>
+						<p>
+							The <strong>Color Profile</strong> is optimized for use in **Lightroom and Adobe Camera Raw (ACR)** to provide a Nikon Flexible Color base:  
+							- Format: <strong>.XMP</strong> (for Adobe Camera Raw & Lightroom)  
+							- Purpose: Simulates Nikon’s Flexible Color rendering in Lightroom/ACR.  
+							- Usage: Import into Lightroom or ACR and apply to images before adjusting exposure, contrast, or other settings.  
+						</p>
+						<a href="Presets - STD to NIKON Flexible Color by krafta.zip" class="btn btn-success fw-bold"><i class="bi bi-download"></i> Download Color Profile</a>
+
+						<div class="alert alert-info mt-4">
+							<i class="bi bi-info-circle"></i> <strong>Note:</strong> These files provide a **neutral Nikon-style base**, allowing you to create custom presets tailored to your own editing workflow.
+						</div>
+
+						<p class="text-muted mt-3">Need help installing? Visit the <a href="#">FAQs & Installation Guide</a>.</p>
+				</div>
+	        </div>
+	    </div>
+	</div>
+	
+	
+	<!-- Modal: FAQs & Troubleshooting -->
+	<div class="modal fade" id="modalFAQ" tabindex="-1" aria-labelledby="modalFAQLabel" aria-hidden="true">
+		<div class="modal-dialog modal-xl">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title fw-bold" id="modalFAQLabel">FAQs & Troubleshooting</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+					<h6 class="fw-bold">📌 Frequently Asked Questions (FAQs)</h6>
+
+					<div class="accordion" id="faqAccordion">
+						<!-- Question 1 -->
+						<div class="accordion-item">
+							<h2 class="accordion-header" id="faqHeading1">
+								<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapse1" aria-expanded="true" aria-controls="faqCollapse1">
+									🔹 How do I install the LUTs in Photoshop?
+								</button>
+							</h2>
+							<div id="faqCollapse1" class="accordion-collapse collapse show" aria-labelledby="faqHeading1" data-bs-parent="#faqAccordion">
+								<div class="accordion-body">
+									1. Open Photoshop and load an image. <br>
+									2. Go to <strong>Adjustments Panel</strong> → Click <strong>Color Lookup</strong>. <br>
+									3. In the <strong>Properties</strong> panel, click <strong>Load 3D LUT</strong> and select the downloaded <code>.CUBE</code> file. <br>
+									4. Adjust the intensity as needed.
+								</div>
+							</div>
+						</div>
+
+						<!-- Question 2 -->
+						<div class="accordion-item">
+							<h2 class="accordion-header" id="faqHeading2">
+								<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapse2" aria-expanded="false" aria-controls="faqCollapse2">
+									🔹 How do I use the Color Profile in Lightroom/ACR?
+								</button>
+							</h2>
+							<div id="faqCollapse2" class="accordion-collapse collapse" aria-labelledby="faqHeading2" data-bs-parent="#faqAccordion">
+								<div class="accordion-body">
+									1. Open **Lightroom** or **Adobe Camera Raw (ACR)**.<br>
+									2. Go to the <strong>Profile Browser</strong> in the **Basic Panel**.<br>
+									3. Click <strong>Import Profiles</strong> and select the downloaded <code>.XMP</code> file.<br>
+									4. Once imported, apply it to your image and adjust settings as needed.
+								</div>
+							</div>
+						</div>
+
+						<!-- Question 3 -->
+						<div class="accordion-item">
+							<h2 class="accordion-header" id="faqHeading3">
+								<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapse3" aria-expanded="false" aria-controls="faqCollapse3">
+									🔹 Why is my downloaded file not working?
+								</button>
+							</h2>
+							<div id="faqCollapse3" class="accordion-collapse collapse" aria-labelledby="faqHeading3" data-bs-parent="#faqAccordion">
+								<div class="accordion-body">
+									Ensure that:<br>
+									- The correct file format is used (<code>.CUBE</code> for LUTs, <code>.XMP</code> for Lightroom).<br>
+									- The files are placed in the correct folder.<br>
+									- Your software is updated to the latest version.<br>
+									If issues persist, try restarting your application or reinstalling the files.
+								</div>
+							</div>
+						</div>
+
+					</div>
+
+					<h6 class="fw-bold mt-4">🔧 Troubleshooting</h6>
+					<p>If you experience issues with file imports or application errors, try the following:</p>
+					<ul>
+						<li>✔ Restart your software after importing new profiles or LUTs.</li>
+						<li>✔ Make sure you're using compatible versions of Photoshop, Lightroom, or ACR.</li>
+						<li>✔ Check your file formats and ensure they are correctly placed in the designated folders.</li>
+						<li>✔ If errors persist, visit our <a href="#">support page</a> for further assistance.</li>
+					</ul>
+
+					<div class="alert alert-info mt-3">
+						<i class="bi bi-info-circle"></i> <strong>Need more help?</strong> Contact support or check our detailed guides for step-by-step troubleshooting.
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	
+	
+	<script	src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+			integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" 
+			crossorigin="anonymous"></script>
+	
+    <script type="module" src="module.js"></script>
+    <script src="lightroom-presets-creator.js"></script>
+
+</body>
+</html>
