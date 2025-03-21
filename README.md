@@ -1,4 +1,4 @@
-# Nikon Picture Profile & Lightroom/ACR Preset Editor  
+# Nikon Flexible Color Profile Editor + Lightroom/ACR Preset Creator
 
 This is a web-based application that allows users to **import, edit, and export** **Nikon Picture Profile (NP3)** files, making them compatible with **Nikon cameras** and **NX Studio** software.  
 
