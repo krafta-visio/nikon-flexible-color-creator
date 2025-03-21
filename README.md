@@ -12,7 +12,8 @@ Additionally, the application supports **importing Lightroom/Adobe Camera Raw (A
 - ✅ **Manage** Picture Profiles & LUTs for Lightroom and ACR  
 
 ## **Supported Features**  
-### **Basic Settings**  
+
+### **Advanced Settings**  
 - ✅ Sharpening  
 - ✅ Mid-range sharpening  
 - ✅ Clarity  
@@ -57,6 +58,6 @@ Additionally, the application supports **importing Lightroom/Adobe Camera Raw (A
 
 This application is based on modifications of the original project:  
 
-**GitHub - Nikon flexible color picture control reader/writer**  
+[**GitHub - Nikon flexible color picture control reader/writer**](https://github.com/ssssota/nikon-flexible-color-picture-control/)  
 
 This application bridges the gap between Nikon Picture Profiles and Lightroom/ACR presets, offering a streamlined workflow for photographers and videographers.  
