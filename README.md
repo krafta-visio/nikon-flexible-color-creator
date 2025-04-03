@@ -46,7 +46,8 @@ Additionally, the application supports **importing Lightroom/Adobe Camera Raw (A
 - NX Studio (for all supported Nikon cameras)  
 
 ### **In-Camera Compatibility:**  
-- **Z6III**  
+- **Z6III**
+- **Z5II** 
 - **Z50II**  
 
 ### **Software-Only Compatibility:**  
