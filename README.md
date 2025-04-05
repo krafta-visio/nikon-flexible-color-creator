@@ -17,7 +17,7 @@ Additionally, the application supports **importing Lightroom/Adobe Camera Raw (A
 - ✅ Sharpening  
 - ✅ Mid-range sharpening  
 - ✅ Clarity  
-- ❌ Custom Tone Curve *(Coming Soon!)*  
+- ✅ Custom Tone Curve
 - ✅ Contrast  
 - ✅ Highlights  
 - ✅ Shadows  
@@ -36,9 +36,6 @@ Additionally, the application supports **importing Lightroom/Adobe Camera Raw (A
 - ✅ Brightness  
 - ✅ Blending  
 - ✅ Balance  
-
-### **Other Features**  
-- ❌ Comments *(Future Update!)*  
 
 ## **Compatibility**  
 
