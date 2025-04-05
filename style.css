@@ -1,0 +1,179 @@
+body{
+font-family: Poppins;
+}
+.bg-70{
+background-color: #121212;
+}
+.bg-100{
+background-color: #000;
+}
+label{
+color: #6c757d;
+}
+footer a{
+color: #513f09;
+text-decoration: none;
+font-weight: bold;
+}
+input[type="text"], input[type="file"]{
+color: #fefefe;
+background: #373b3e;
+border:0;
+}
+
+
+
+
+
+
+/* INPUT RANGE */
+input[type="range"] {
+-webkit-appearance: none; /* Hapus style bawaan browser */
+width: 100%;
+height: 8px;
+background: #373b3e; /* Warna bar (track) */
+border-radius: 5px;
+outline: none;
+transition: background 0.3s;
+}
+/* Chrome, Safari, Edge */
+input[type="range"]::-webkit-slider-runnable-track {
+width: 100%;
+height: 8px;
+background: #373b3e; /* Warna bar */
+border-radius: 5px;
+}
+/* Style untuk thumb (point) */
+input[type="range"]::-webkit-slider-thumb {
+-webkit-appearance: none;
+appearance: none;
+width: 20px;
+height: 20px;
+background: #FFC107; /* Warna point */
+border: 2px solid #373b3e; /* Tambahkan border agar kontras */
+border-radius: 50%;
+cursor: pointer;
+margin-top: -6px; /* Sesuaikan agar sejajar dengan track */
+}
+/* Firefox */
+input[type="range"]::-moz-range-track {
+width: 100%;
+height: 8px;
+background: #373b3e; /* Warna bar */
+border-radius: 5px;
+}
+input[type="range"]::-moz-range-thumb {
+width: 20px;
+height: 20px;
+background: #FFC107; /* Warna point */
+border: 2px solid #373b3e;
+border-radius: 50%;
+cursor: pointer;
+}
+/* Efek hover pada point */
+input[type="range"]:hover::-webkit-slider-thumb {
+background: #FFA000; /* Warna point sedikit lebih gelap saat hover */
+}
+input[type="range"]:hover::-moz-range-thumb {
+background: #FFA000;
+}
+
+
+/* TAB COLOR MIXER */
+.color-content {
+display: none; /* Sembunyikan semua div secara default */
+}
+
+.active {
+display: block; /* Tampilkan hanya div yang aktif */
+}
+
+.color-tab {
+cursor: pointer;
+padding: 5px;
+display: inline-block;
+border-radius: 50%;
+border: 2px solid #121212;
+}
+
+.color-tab:hover {
+border: 2px solid #fff;
+}
+
+
+/* TAB COLOR GRADING */
+/* Untuk slider Hue */
+.hue-slider::-webkit-slider-runnable-track {
+background: linear-gradient(to right, 
+#ff0000, /* 0° - Merah */
+#ff7f00, /* 30° - Oranye */
+#ffff00, /* 60° - Kuning */
+#00ff00, /* 120° - Hijau */
+#00ffff, /* 180° - Cyan */
+#0000ff, /* 240° - Biru */
+#8b00ff, /* 270° - Ungu */
+#ff0000  /* 360° - Kembali ke Merah */
+) !important;
+}
+
+/* Firefox */
+.hue-slider::-moz-range-track {
+background: linear-gradient(to right, 
+#ff0000, #ff7f00, #ffff00, #00ff00, #00ffff, #0000ff, #8b00ff, #ff0000
+) !important;
+}
+
+.hue-container {
+width: 100%;
+align-items: center;
+}
+.hue-preview {
+width: 30px;
+height: 30px;
+border-radius: 50%;
+}
+
+
+
+
+
+/* CUSTOM CURVE */
+#curve-editor {
+width: 400px;
+height: 400px;
+border: 1px solid #ccc;
+position: relative;
+}
+.point {
+width: 10px;
+height: 10px;
+background: red;
+border-radius: 50%;
+position: absolute;
+cursor: grab;
+}
+svg { 
+background: #222; 
+border: 1px solid #444; 
+}
+.curve-line { 
+fill: none; 
+stroke: #adb5bd; 
+stroke-width: 2; 
+}
+.control-point { 
+fill: #ffc107; 
+cursor: pointer; 
+}
+.grid line { 
+stroke: #666; 
+stroke-opacity: 0.5; 
+}
+.axis-label { 
+fill: #fff; 
+font-size: 12px;
+}
+.tick-label { 
+fill: #fff; 
+font-size: 10px;
+}

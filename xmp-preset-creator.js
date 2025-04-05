@@ -1,0 +1,99 @@
+const arrAcrPresetNames=["Ethereal","Serenity","Celestial","Solstice","Oblivion","Horizon","Zenith","Nebula","Nocturne","Harmonia","Dusk","Velvet","Cascade","Verve","Nimbus","Monarch","Eclipse","Twilight","Lavish","Enigma","Mystic","Opal","Mirage","Halcyon","Borealis","Drift","Celestia","Willow","Frost","Obsidian","Silhouette","Ember","Glint","Solara","Astral","Lunar","Haze","Spectrum","Bliss","Eunoia","Synergy","Gleam","Lucid","Onyx","Prism","Breeze","Sundown","Velour","Mystique","Echo","Moonlight","Opulent","Quasar","Infinitum","Verdant","Seraphic","Auric","Zephyr","Obscura","Drizzle","Glacier","Euphony","Noir","Glow","Radiant","Sundream","Chroma","Dulcet","Elysian","Hallowed","Sundance","Sable","Shadow","Crescent","Sonata","Utopia","Tundra","Flare","Iridescent","Nebulous","Oceanic","Opus","Halo","Alpenglow","Obscure","Dewdrop","Myst","Elixir","Dawnlight","Dusklit","Twilight Glow","Cinder","Harmonic","Evolve","Momentum","Seraph","Nebulance","Aether","Quintessence","Oasis","Wanderlust","Reverie","Memento","Astralis","Lyric","Resonance","Lustrum","Dalliance","Panorama","Halation","Emanation","Allure","Sonance","Abyss","Ephemeral","Eclipse","Phantom","Lullaby","Evermore","Paragon","Noesis","Hypnosis","Spectra","Nova","Echelon","Summit","Zen","Momentum","Evocative","Mirabilia","Rhapsody","Soliloquy","Parallax","Labyrinth","Whisper","Echoes","Aurorae","Sublime","Flux","Esoteric","Illume","Astray","Zephyrus","Empyrean","Horizon","Fathom","Radiance","Euphora","Eudaimonia","Nirvana","Echelon","Omniscient","Aeternum","Aesthesis","Lucidity","Ebullience","Cynosure","Liminal","Peregrine","Zenithal","Singularity","Eunoic","Sonorous","Omnifarious","Vestige","Vortex","Resplendent","Concordia","Emprise","Aeonian","Hiraeth","Solivagant","Meraki","Pantomime","Serendipity","Nostalgia","Sonder","Phantasm","Inertia","Ebullient","Arcadia","Vellichor","Propinquity","Halycon","Sempiternal","Tranquil","Solivagus","Monachopsis","Labyrinthine","Aequitas","Hiraethtide","Philoponetic","Nyctophilia","Peripatetic","Cacophony","Deliquesce","Epoch","Mellifluous","Lachrymose","Pulchritudinous","Eutony","Syzygy","Aurum","Samsara","Kaleidoscopic","Recondite","Anemoia","Susurrus","Eunoic","Kintsugi","Metanoia","Empyreum","Sapience","Echolalia","Etherealize","Ephemera","Lacuna","Numinous","Efflorescence","Catharsis","Palindrome","Limerence","Zephyrion","Peregrination","Resonant","Paracosm","Inchoate","Demiurge","Bricolage","Euthymia","Memento Mori","Esoterica","Eccentricity","Pluviophile","Halcyonic","Eurythmics","Cosmogyral","Anathema","Amphigory","Lapsarian","Evanescence","Verdigris","Chiaroscuro","Ophidian","Epeolatry","Vagary","Obliquity","Astronavigable","Orphic","Phosphenes","Consonance","Pantomnesia","Eutrophia","Neologism","Orison","Apophenia","Incandescence","Eldritch","Kismet","Wistful"];function randAcrPresetId(){let r="ABCDE0123456789",t="";for(let e=0;e<32;e++)t+=r.charAt(Math.floor(Math.random()*r.length));return t}function randAcrPresetName(){return arrAcrPresetNames[Math.floor(Math.random()*arrAcrPresetNames.length)]+" "+arrAcrPresetNames[Math.floor(Math.random()*arrAcrPresetNames.length)]}function randAcr100100(e){let r,t;switch(e){case"Light":r=-10,t=10;break;case"Medium":r=-20,t=20;break;case"Strong":r=-40,t=40;break;default:throw new Error("AcrPresetIntensity tidak valid")}return Math.floor(Math.random()*(t-r+1))+r}function randAcr0100(e){let r,t;switch(e){case"Light":r=0,t=10;break;case"Medium":r=10,t=20;break;case"Strong":r=20,t=40;break;default:throw new Error("AcrPresetIntensity tidak valid")}return Math.floor(Math.random()*(t-r+1))+r}function randAcr0150(e){let r,t;switch(e){case"Light":r=0,t=20;break;case"Medium":r=15,t=30;break;case"Strong":r=20,t=50;break;default:throw new Error("AcrPresetIntensity tidak valid")}return Math.floor(Math.random()*(t-r+1))+r}function randAcr0360(){return Math.floor(361*Math.random())}function randAcrBlending(e){let r,t;switch(e){case"Light":r=40,t=60;break;case"Medium":r=30,t=70;break;case"Strong":r=20,t=80;break;default:throw new Error("AcrPresetIntensity tidak valid")}return Math.floor(Math.random()*(t-r+1))+r}function generateAcrPreset(){var e=`<x:xmpmeta xmlns:x="adobe:ns:meta/" x:xmptk="Adobe XMP Core 7.0-c000 1.000000, 0000/00/00-00:00:00        ">
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<rdf:Description rdf:about=""
+xmlns:crs="http://ns.adobe.com/camera-raw-settings/1.0/"
+crs:PresetType="Normal"
+crs:Cluster=""
+crs:UUID="`+randAcrPresetId()+`"
+crs:SupportsAmount2="True"
+crs:SupportsAmount="True"
+crs:SupportsColor="True"
+crs:SupportsMonochrome="True"
+crs:SupportsHighDynamicRange="True"
+crs:SupportsNormalDynamicRange="True"
+crs:SupportsSceneReferred="True"
+crs:SupportsOutputReferred="True"
+crs:RequiresRGBTables="False"
+crs:CameraModelRestriction=""
+crs:Copyright="krafta.preset.creator"
+crs:ContactInfo="https://facebook.com/krafta.visio"
+crs:Version="14.5"
+crs:ProcessVersion="11.0"
+crs:Contrast2012="`+randAcr100100(AcrPresetIntensity)+`"
+crs:Highlights2012="`+randAcr100100(AcrPresetIntensity)+`"
+crs:Shadows2012="`+randAcr100100(AcrPresetIntensity)+`"
+crs:Whites2012="`+randAcr100100(AcrPresetIntensity)+`"
+crs:Blacks2012="`+randAcr100100(AcrPresetIntensity)+`"
+crs:Clarity2012="`+randAcr100100(AcrPresetIntensity)+`"
+crs:Saturation="`+randAcr100100(AcrPresetIntensity)+`"
+crs:Sharpness="`+randAcr0150(AcrPresetIntensity)+`"
+crs:SharpenRadius="+1.0"
+crs:SharpenDetail="25"
+crs:SharpenEdgeMasking="0"
+crs:HueAdjustmentRed="`+randAcr100100(AcrPresetIntensity)+`"
+crs:HueAdjustmentOrange="`+randAcr100100(AcrPresetIntensity)+`"
+crs:HueAdjustmentYellow="`+randAcr100100(AcrPresetIntensity)+`"
+crs:HueAdjustmentGreen="`+randAcr100100(AcrPresetIntensity)+`"
+crs:HueAdjustmentAqua="`+randAcr100100(AcrPresetIntensity)+`"
+crs:HueAdjustmentBlue="`+randAcr100100(AcrPresetIntensity)+`"
+crs:HueAdjustmentPurple="`+randAcr100100(AcrPresetIntensity)+`"
+crs:HueAdjustmentMagenta="`+randAcr100100(AcrPresetIntensity)+`"
+crs:SaturationAdjustmentRed="`+randAcr100100(AcrPresetIntensity)+`"
+crs:SaturationAdjustmentOrange="`+randAcr100100(AcrPresetIntensity)+`"
+crs:SaturationAdjustmentYellow="`+randAcr100100(AcrPresetIntensity)+`"
+crs:SaturationAdjustmentGreen="`+randAcr100100(AcrPresetIntensity)+`"
+crs:SaturationAdjustmentAqua="`+randAcr100100(AcrPresetIntensity)+`"
+crs:SaturationAdjustmentBlue="`+randAcr100100(AcrPresetIntensity)+`"
+crs:SaturationAdjustmentPurple="`+randAcr100100(AcrPresetIntensity)+`"
+crs:SaturationAdjustmentMagenta="`+randAcr100100(AcrPresetIntensity)+`"
+crs:LuminanceAdjustmentRed="`+randAcr100100(AcrPresetIntensity)+`"
+crs:LuminanceAdjustmentOrange="`+randAcr100100(AcrPresetIntensity)+`"
+crs:LuminanceAdjustmentYellow="`+randAcr100100(AcrPresetIntensity)+`"
+crs:LuminanceAdjustmentGreen="`+randAcr100100(AcrPresetIntensity)+`"
+crs:LuminanceAdjustmentAqua="`+randAcr100100(AcrPresetIntensity)+`"
+crs:LuminanceAdjustmentBlue="`+randAcr100100(AcrPresetIntensity)+`"
+crs:LuminanceAdjustmentPurple="`+randAcr100100(AcrPresetIntensity)+`"
+crs:LuminanceAdjustmentMagenta="`+randAcr100100(AcrPresetIntensity)+`"
+crs:SplitToningShadowHue="`+randAcr0360()+`"
+crs:SplitToningShadowSaturation="`+randAcr0100(AcrPresetIntensity)+`"
+crs:ColorGradeShadowLum="`+randAcr100100(AcrPresetIntensity)+`"
+crs:ColorGradeMidtoneHue="`+randAcr0360()+`"
+crs:ColorGradeMidtoneSat="`+randAcr0100(AcrPresetIntensity)+`"
+crs:ColorGradeMidtoneLum="`+randAcr100100(AcrPresetIntensity)+`"
+crs:SplitToningHighlightHue="`+randAcr0360()+`"
+crs:SplitToningHighlightSaturation="`+randAcr0100(AcrPresetIntensity)+`"
+crs:ColorGradeHighlightLum="`+randAcr100100(AcrPresetIntensity)+`"
+crs:ColorGradeBlending="`+randAcrBlending(AcrPresetIntensity)+`"
+crs:SplitToningBalance="`+randAcr100100(AcrPresetIntensity)+`"
+crs:ColorGradeGlobalHue="0"
+crs:ColorGradeGlobalSat="0"
+crs:ColorGradeGlobalLum="0"
+crs:HasSettings="True">
+<crs:Name>
+<rdf:Alt>
+<rdf:li xml:lang="x-default">`+AcrPresetName+" - "+AcrPresetIntensity+`</rdf:li>
+</rdf:Alt>
+</crs:Name>
+<crs:ShortName>
+<rdf:Alt>
+<rdf:li xml:lang="x-default"/>
+</rdf:Alt>
+</crs:ShortName>
+<crs:SortName>
+<rdf:Alt>
+<rdf:li xml:lang="x-default"/>
+</rdf:Alt>
+</crs:SortName>
+<crs:Group>
+<rdf:Alt>
+<rdf:li xml:lang="x-default">krafta.preset.creator</rdf:li>
+</rdf:Alt>
+</crs:Group>
+<crs:Description>
+<rdf:Alt>
+<rdf:li xml:lang="x-default"/>
+</rdf:Alt>
+</crs:Description>
+</rdf:Description>
+</rdf:RDF>
+</x:xmpmeta>`;document.getElementById("AcrPresetOutput").textContent=e,downlaodAcrPresetFile()}function downlaodAcrPresetFile(){var e=document.getElementById("AcrPresetOutput").textContent,r=AcrPresetName+" - "+AcrPresetIntensity+".xmp",e=new Blob([e],{type:"text/plain"}),t=document.createElement("a");t.href=URL.createObjectURL(e),t.download=r,document.body.appendChild(t),t.click(),document.body.removeChild(t),showToast("Preset '"+AcrPresetName+"' .XMP has been generated!"),AcrPresetName="",document.getElementById("AcrPresetOutput").textContent=""}document.querySelectorAll(".generate-preset").forEach(e=>{e.addEventListener("click",function(){switch(this.getAttribute("data-intensity")){case"light":AcrPresetIntensity="Light";break;case"medium":AcrPresetIntensity="Medium";break;case"strong":AcrPresetIntensity="Strong"}AcrPresetName=randAcrPresetName(),generateAcrPreset()})});
