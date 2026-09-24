@@ -44,7 +44,8 @@ Additionally, the application supports **importing Lightroom/Adobe Camera Raw (A
 
 ### **In-Camera Compatibility:**  
 - **Z6III**
-- **Z5II** 
+- **Z5II**
+- **Z5IIC** 
 - **Z50II**  
 - **Z9**  
 - **Z8**  
