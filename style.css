@@ -177,3 +177,87 @@ font-size: 12px;
 fill: #fff; 
 font-size: 10px;
 }
+
+/* LIVE PREVIEW CANVAS & WORKSPACE */
+.sticky-preview {
+    position: sticky;
+    top: 15px;
+    z-index: 10;
+}
+
+.preview-container {
+    background: #1e1e1e;
+    border-radius: 12px;
+    padding: 12px;
+    border: 1px solid #333;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+}
+
+.canvas-wrapper {
+    position: relative;
+    width: 100%;
+    min-height: 250px;
+    background: #121212;
+    border-radius: 8px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#previewCanvas {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 6px;
+    cursor: default;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.preview-toolbar {
+    background: #181818;
+    border-radius: 8px;
+    padding: 10px;
+    margin-top: 10px;
+    border: 1px solid #2d2d2d;
+}
+
+#btnCompareOriginal:active, #btnCompareOriginal.active {
+    background-color: #ffc107 !important;
+    color: #000 !important;
+    border-color: #ffc107 !important;
+}
+
+.badge-sample {
+    font-size: 8pt;
+    letter-spacing: 0.5px;
+}
+
+#presetTabs .nav-link {
+    color: #ced4da;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+}
+
+#presetTabs .nav-link:hover {
+    color: #ffc107;
+    background: rgba(255, 193, 7, 0.1);
+}
+
+#presetTabs .nav-link.active {
+    background-color: #ffc107;
+    color: #212529 !important;
+}
+
+select optgroup {
+    background: #212529;
+    color: #ffc107;
+    font-weight: bold;
+}
+
+select option {
+    background: #181818;
+    color: #ffffff;
+}
+
+
